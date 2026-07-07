@@ -1,0 +1,64 @@
+{
+  "input_jsonl": "/home/work_nfs23/xmren/tokens/extracted_sentences_score.jsonl",
+  "total_lines": 25917730,
+  "valid_rows": 0,
+  "bad_json": 0,
+  "missing_core_metrics": 25917730,
+  "sample_for_scatter": 0,
+  "metric_stats_approx_percentile": {
+    "mos_score": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null
+    },
+    "snr_score": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null
+    },
+    "spk_similar_minimum_score": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null
+    },
+    "quality_score": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "max": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null
+    }
+  },
+  "grade_counts": {},
+  "top_speakers": [],
+  "correlation_matrix_order": [
+    "mos_score",
+    "snr_score",
+    "spk_similar_minimum_score",
+    "quality_score"
+  ],
+  "correlation_matrix": null,
+  "note": "Percentiles are approximated from fixed-width histograms for memory efficiency on very large JSONL."
+}

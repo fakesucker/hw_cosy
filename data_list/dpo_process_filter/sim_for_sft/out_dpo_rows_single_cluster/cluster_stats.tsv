@@ -1,0 +1,2 @@
+cluster_id	size	frac	mean_dist	median_dist	p95_dist	max_dist	outlier_count	outlier_frac
+0	46888	1.000000	13.636184	12.780502	21.842330	33.902596	938	0.020005

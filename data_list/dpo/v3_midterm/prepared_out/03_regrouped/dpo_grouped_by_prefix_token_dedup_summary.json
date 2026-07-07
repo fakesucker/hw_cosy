@@ -1,0 +1,12 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/02_dedup/dpo_rows_with_group_token_dedup.jsonl",
+  "output_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/03_regrouped/dpo_grouped_by_prefix_token_dedup.jsonl",
+  "total_rows_in": 72450,
+  "total_groups_out": 1969,
+  "bad_json": 0,
+  "missing_group_id": 0,
+  "group_size_distribution": {
+    "30": 1523,
+    "60": 446
+  }
+}

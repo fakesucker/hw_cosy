@@ -1,0 +1,9 @@
+{
+  "groups_total": 9,
+  "groups_success": 8,
+  "groups_failed": 1,
+  "model": "gemini-3.1-pro-preview",
+  "max_batch_size": 4,
+  "concurrent_groups": 1,
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_test"
+}

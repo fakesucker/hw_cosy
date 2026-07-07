@@ -1,0 +1,25 @@
+{
+  "groups_total": 1969,
+  "groups_pending_this_run": 1969,
+  "groups_skipped_resume": 0,
+  "groups_success_this_run": 402,
+  "groups_failed_this_run": 1567,
+  "groups_success_total": 402,
+  "failed_reason_counts": {
+    "batch_evaluate_failed": 1645,
+    "final_pair_reject": 390
+  },
+  "model": "gemini-3.1-pro-preview",
+  "max_batch_size": 6,
+  "concurrent_groups": 2,
+  "num_processes": 8,
+  "input_items_total": 72450,
+  "judged_items_total": 59070,
+  "dedupe_dropped_audio_total": 13380,
+  "final_pair_judge_rounds": 3,
+  "min_pair_judge_votes": 2,
+  "min_pair_margin": 1.0,
+  "min_pair_confidence": 3.0,
+  "keep_duplicate_audio": false,
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v3_midterm_mp"
+}

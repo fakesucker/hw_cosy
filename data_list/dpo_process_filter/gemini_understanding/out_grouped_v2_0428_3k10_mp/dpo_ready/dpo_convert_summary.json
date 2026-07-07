@@ -1,0 +1,18 @@
+{
+  "total_lines": 2685,
+  "valid_pairs": 2685,
+  "train_pairs": 2637,
+  "cv_pairs": 48,
+  "bad_pairs": 0,
+  "bad_reasons": {},
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/kefu_dpo_pairs.jsonl",
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready",
+  "train_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready/dpo_train.jsonl",
+  "cv_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready/dpo_cv.jsonl",
+  "train_list": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready/dpo_train.list",
+  "cv_list": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready/dpo_cv.list",
+  "bad_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_3k10_mp/dpo_ready/dpo_bad_samples.jsonl",
+  "cv_ratio": 0.02,
+  "seed": "cosyvoice_dpo_v1",
+  "min_token_len": 1
+}

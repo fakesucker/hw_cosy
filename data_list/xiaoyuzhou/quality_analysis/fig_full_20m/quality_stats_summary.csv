@@ -1,0 +1,5 @@
+metric,count,mean,std,min,p50_approx,p90_approx,p95_approx,p99_approx,max
+mos_score,0,,,,,,,,
+snr_score,0,,,,,,,,
+spk_similar_minimum_score,0,,,,,,,,
+quality_score,0,,,,,,,,

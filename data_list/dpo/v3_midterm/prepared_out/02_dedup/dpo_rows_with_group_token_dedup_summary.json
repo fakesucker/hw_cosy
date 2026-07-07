@@ -1,0 +1,14 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/01_grouped/dpo_rows_with_group.jsonl",
+  "output_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/02_dedup/dpo_rows_with_group_token_dedup.jsonl",
+  "total_in": 72450,
+  "total_out": 72450,
+  "removed_same_token": 0,
+  "removed_ratio": 0.0,
+  "bad_json": 0,
+  "missing_group_id": 0,
+  "missing_token": 0,
+  "groups_total": 1969,
+  "groups_reduced": 0,
+  "max_removed_in_single_group": 0
+}

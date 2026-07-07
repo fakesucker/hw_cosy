@@ -1,0 +1,219 @@
+{
+  "input_jsonl": "/home/work_nfs23/xmren/tokens/extracted_sentences_score.jsonl",
+  "total_lines_seen": 25917730,
+  "bad_json_lines": 0,
+  "missing_or_invalid_metric_lines": 0,
+  "valid_lines": 25917730,
+  "weights": {
+    "mos": 0.45,
+    "snr": 0.25,
+    "spk_sim": 0.3
+  },
+  "snr_norm_range": [
+    10.0,
+    50.0
+  ],
+  "metric_summary": {
+    "mos_score": {
+      "count": 25917730,
+      "mean": 3.4487225328668774,
+      "std": 0.33467677854792477,
+      "min": 2.500000238418579,
+      "p01": 2.6491072177886963,
+      "p05": 2.858400583267212,
+      "p10": 2.988548755645752,
+      "p25": 3.2186355590820312,
+      "p50": 3.471015453338623,
+      "p75": 3.6985561847686768,
+      "p90": 3.871699333190918,
+      "p95": 3.9604320526123047,
+      "p99": 4.102142333984375,
+      "max": 4.590702056884766
+    },
+    "snr_score": {
+      "count": 25917730,
+      "mean": 31.844973406400854,
+      "std": 10.752527305101221,
+      "min": 15.00000010842738,
+      "p01": 15.356059701706084,
+      "p05": 16.722224193457897,
+      "p10": 18.323774183963472,
+      "p25": 22.759320576647845,
+      "p50": 30.350120973053237,
+      "p75": 40.43268754133681,
+      "p90": 47.63989548251121,
+      "p95": 50.56487480853263,
+      "p99": 54.48892683570959,
+      "max": 62.19885282696779
+    },
+    "spk_similar_minimum_score": {
+      "count": 25917730,
+      "mean": 0.8762019376009266,
+      "std": 0.11752554354616515,
+      "min": 0.70000005,
+      "p01": 0.7034019,
+      "p05": 0.7157234,
+      "p10": 0.72918165,
+      "p25": 0.76429296,
+      "p50": 0.837984,
+      "p75": 1.0,
+      "p90": 1.0,
+      "p95": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "quality_score": {
+      "count": 25917730,
+      "mean": 0.673933687338877,
+      "std": 0.08763419735787076,
+      "min": 0.4108221923993238,
+      "p01": 0.4915269216418416,
+      "p05": 0.5346774188603388,
+      "p10": 0.5598100801292151,
+      "p25": 0.6069378742477258,
+      "p50": 0.6709320624532641,
+      "p75": 0.7427844666566006,
+      "p90": 0.7930389632899604,
+      "p95": 0.8161537977020281,
+      "p99": 0.8519265592098237,
+      "max": 0.9409745573997499
+    }
+  },
+  "grade_counts": {
+    "D": 5815782,
+    "B": 7286765,
+    "C": 11685676,
+    "A": 1127477,
+    "A_plus": 2030
+  },
+  "speaker_top20": [
+    [
+      "SPEAKER_00",
+      11388062
+    ],
+    [
+      "SPEAKER_01",
+      7674028
+    ],
+    [
+      "SPEAKER_02",
+      4204807
+    ],
+    [
+      "SPEAKER_03",
+      1674158
+    ],
+    [
+      "SPEAKER_04",
+      600822
+    ],
+    [
+      "SPEAKER_05",
+      212219
+    ],
+    [
+      "SPEAKER_06",
+      87052
+    ],
+    [
+      "SPEAKER_07",
+      36749
+    ],
+    [
+      "SPEAKER_08",
+      17600
+    ],
+    [
+      "SPEAKER_09",
+      9341
+    ],
+    [
+      "SPEAKER_10",
+      3940
+    ],
+    [
+      "SPEAKER_11",
+      2885
+    ],
+    [
+      "SPEAKER_12",
+      1748
+    ],
+    [
+      "SPEAKER_13",
+      1194
+    ],
+    [
+      "SPEAKER_14",
+      742
+    ],
+    [
+      "SPEAKER_15",
+      520
+    ],
+    [
+      "SPEAKER_16",
+      340
+    ],
+    [
+      "SPEAKER_17",
+      266
+    ],
+    [
+      "SPEAKER_18",
+      194
+    ],
+    [
+      "SPEAKER_19",
+      193
+    ]
+  ],
+  "histograms": {
+    "mos_score": {
+      "[3.4, 3.6)": 5741008,
+      "[3.6, 3.8)": 5205783,
+      "[3.8, 4.0)": 3123449,
+      "[3.2, 3.4)": 4874676,
+      "[3.0, 3.2)": 3349993,
+      "[2.5, 3.0)": 2735291,
+      "[4.0, 5.0)": 887530
+    },
+    "snr_score": {
+      "[20, 25)": 4456549,
+      "[45, 50)": 2474746,
+      "[35, 40)": 2965183,
+      "[40, 45)": 2729504,
+      "[25, 30)": 4205345,
+      "[10, 20)": 4024794,
+      "[30, 35)": 3546226,
+      "[50, 999)": 1515383
+    },
+    "spk_similar_minimum_score": {
+      "[0.75, 0.8)": 5433803,
+      "[0.95, 1.01)": 11784557,
+      "[0.85, 0.9)": 673567,
+      "[0.7, 0.75)": 4846937,
+      "[0.8, 0.85)": 3148893,
+      "[0.9, 0.95)": 29973
+    },
+    "quality_score": {
+      "[0.5, 0.6)": 5441373,
+      "[0.8, 0.9)": 2149563,
+      "[0.7, 0.8)": 8045484,
+      "[0.6, 0.7)": 9904871,
+      "[0.0, 0.5)": 374409,
+      "[0.9, 1.01)": 2030
+    }
+  },
+  "outputs": {
+    "grade_files": {
+      "A_plus": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/grade_A_plus.jsonl",
+      "A": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/grade_A.jsonl",
+      "B": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/grade_B.jsonl",
+      "C": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/grade_C.jsonl",
+      "D": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/grade_D.jsonl"
+    },
+    "top_k_file": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/top_500000_quality.jsonl",
+    "high_quality_strict": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/xiaoyuzhou/quality_analysis/high_quality_strict.jsonl"
+  }
+}

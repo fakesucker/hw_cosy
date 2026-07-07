@@ -1,0 +1,19 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/utt_wav90w.jsonl",
+  "total_groups_raw": 30000,
+  "total_groups_kept": 30000,
+  "total_rows_raw": 900000,
+  "total_rows_kept": 900000,
+  "bad_json": 0,
+  "missing_utt": 0,
+  "min_group_size": 2,
+  "max_group_size": 0,
+  "group_size_distribution": {
+    "30": 30000
+  },
+  "outputs": {
+    "grouped_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_grouped_by_prefix.jsonl",
+    "flat_with_group_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_rows_with_group.jsonl",
+    "stats_tsv": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_group_stats.tsv"
+  }
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPO Pairs Audio Comparison Viewer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1117;color:#e1e4e8;min-height:100vh}
+.header{position:sticky;top:0;z-index:100;background:#161b22;border-bottom:1px solid #30363d;padding:12px 24px}
+.header h1{font-size:18px;font-weight:600;color:#58a6ff;margin-bottom:8px}
+.header-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.header-bar input{padding:6px 12px;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e1e4e8;font-size:13px;width:200px;outline:none}
+.header-bar input:focus{border-color:#58a6ff}
+.header-bar button{padding:6px 14px;background:#238636;border:none;border-radius:6px;color:#fff;font-size:13px;cursor:pointer;font-weight:500}
+.header-bar button:hover{background:#2ea043}
+.header-bar button:disabled{background:#21262d;color:#8b949e;cursor:default}
+.stats{display:flex;gap:16px;font-size:12px;color:#8b949e}
+.stats span strong{color:#e1e4e8}
+
+.main{padding:16px 24px;max-width:1400px;margin:0 auto}
+.pagination{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.pagination button{padding:6px 12px;background:#21262d;border:1px solid #30363d;border-radius:6px;color:#c9d1d9;font-size:13px;cursor:pointer}
+.pagination button:hover{background:#30363d}
+.pagination button:disabled{opacity:.4;cursor:default}
+.pagination .page-info{font-size:13px;color:#8b949e}
+.pagination .page-jump{display:flex;gap:4px;align-items:center}
+.pagination .page-jump input{width:50px;padding:4px 6px;background:#0d1117;border:1px solid #30363d;border-radius:4px;color:#e1e4e8;font-size:12px;text-align:center}
+.per-page-select{padding:5px 8px;background:#0d1117;border:1px solid #30363d;border-radius:4px;color:#e1e4e8;font-size:12px}
+
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;margin-bottom:16px;overflow:hidden}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#1c2333;border-bottom:1px solid #30363d;cursor:pointer;user-select:none}
+.card-header:hover{background:#222b3a}
+.card-header .id{font-weight:600;font-size:14px;color:#58a6ff;min-width:80px}
+.card-header .prompt-preview{flex:1;margin:0 16px;font-size:13px;color:#8b949e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-header .badges{display:flex;gap:8px;align-items:center}
+.badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.badge-chosen{background:#1a3a2a;color:#3fb950}
+.badge-rejected{background:#3a1a1a;color:#f85149}
+.badge-vs{color:#8b949e;font-size:12px}
+.card-body{padding:16px;display:none}
+.card.open .card-body{display:block}
+.card.open .card-header{border-bottom-color:#58a6ff}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.audio-col{padding:12px;border-radius:8px;border:1px solid}
+.audio-col.chosen{border-color:#1a4a2a;background:#0d1a11}
+.audio-col.rejected{border-color:#4a1a1a;background:#1a0d11}
+.audio-col h3{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.audio-col audio{width:100%;margin:8px 0;height:40px}
+.audio-meta{font-size:12px;color:#8b949e;margin-top:4px}
+
+.prompt-full{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.6;color:#c9d1d9}
+
+.analysis-section{margin-top:12px}
+.analysis-section h4{font-size:13px;color:#8b949e;margin-bottom:8px}
+.analysis-batch{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.analysis-batch .batch-header{font-size:12px;color:#58a6ff;margin-bottom:6px;display:flex;gap:12px}
+.analysis-item{font-size:12px;line-height:1.6;padding:6px 8px;margin:4px 0;border-radius:4px;border-left:3px solid transparent}
+.analysis-item.is-chosen{border-left-color:#3fb950;background:#0d1a11}
+.analysis-item.is-rejected{border-left-color:#f85149;background:#1a0d11}
+.analysis-item .ver-tag{font-weight:600;margin-right:6px}
+
+.empty-state{text-align:center;padding:60px 20px;color:#8b949e}
+.empty-state p{font-size:16px;margin-bottom:8px}
+
+.keyboard-hint{position:fixed;bottom:16px;right:16px;font-size:11px;color:#484f58;background:#161b22;border:1px solid #21262d;padding:8px 12px;border-radius:6px;pointer-events:none}
+
+.play-sync-btn{padding:3px 8px;background:#21262d;border:1px solid #30363d;border-radius:4px;color:#c9d1d9;font-size:11px;cursor:pointer}
+.play-sync-btn:hover{background:#30363d}
+
+.loading{text-align:center;padding:40px;color:#8b949e}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>DPO Pairs Audio Comparison Viewer</h1>
+  <div class="header-bar">
+    <input type="text" id="searchInput" placeholder="Search group_id..." onkeydown="if(event.key==='Enter')doSearch()">
+    <button onclick="doSearch()">Search</button>
+    <button id="btnReset" style="background:#21262d;color:#c9d1d9" onclick="resetSearch()">Reset</button>
+    <div class="stats" id="statsBar" style="margin-left:auto"></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="pagination" id="paginationTop"></div>
+  <div id="content"></div>
+  <div class="pagination" id="paginationBottom"></div>
+</div>
+
+<div class="keyboard-hint">Kbd: ← → prev/next &nbsp;|&nbsp; Space toggle card &nbsp;|&nbsp; 1/2 play chosen/rejected</div>
+
+<script>
+const BASE = '';
+let currentPage = 1;
+let totalPages = 1;
+let perPage = 10;
+let searchQuery = '';
+let currentPairIndex = -1;
+let openCardIdx = null;
+
+async function loadStats() {
+  const r = await fetch(BASE + '/api/stats');
+  const s = await r.json();
+  document.getElementById('statsBar').innerHTML =
+    `<span>Pairs: <strong>${s.total_pairs}</strong></span>` +
+    `<span>Top chosen: <strong>${Object.entries(s.versions_chosen).slice(0,3).map(([k,v])=>k+'('+v+')').join(', ')}</strong></span>` +
+    `<span>Top rejected: <strong>${Object.entries(s.versions_rejected).slice(0,3).map(([k,v])=>k+'('+v+')').join(', ')}</strong></span>`;
+}
+
+function buildPagination(cls) {
+  const el = document.getElementById(cls);
+  el.innerHTML = '';
+  const addBtn = (label, p, disabled) => {
+    const b = document.createElement('button');
+    b.textContent = label;
+    b.disabled = !!disabled;
+    b.onclick = () => { currentPage = p; loadPage(); };
+    el.appendChild(b);
+  };
+  addBtn('First', 1, currentPage === 1);
+  addBtn('Prev', currentPage - 1, currentPage === 1);
+  const info = document.createElement('span');
+  info.className = 'page-info';
+  info.textContent = ` Page ${currentPage} / ${totalPages} (${totalPairs} pairs) `;
+  el.appendChild(info);
+  addBtn('Next', currentPage + 1, currentPage >= totalPages);
+  addBtn('Last', totalPages, currentPage >= totalPages);
+
+  const jumpDiv = document.createElement('span');
+  jumpDiv.className = 'page-jump';
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.id = 'jumpInput' + cls;
+  inp.placeholder = '#';
+  inp.onkeydown = (e) => { if(e.key==='Enter'){ currentPage=Math.max(1,Math.min(totalPages,parseInt(inp.value)||1)); loadPage(); } };
+  jumpDiv.appendChild(inp);
+  const goBtn = document.createElement('button');
+  goBtn.textContent = 'Go';
+  goBtn.onclick = () => { currentPage=Math.max(1,Math.min(totalPages,parseInt(inp.value)||1)); loadPage(); };
+  jumpDiv.appendChild(goBtn);
+  el.appendChild(jumpDiv);
+
+  const ppSel = document.createElement('select');
+  ppSel.className = 'per-page-select';
+  [5,10,20,50].forEach(n => {
+    const opt = document.createElement('option');
+    opt.value = n; opt.textContent = `${n}/page`;
+    if(n===perPage) opt.selected = true;
+    ppSel.appendChild(opt);
+  });
+  ppSel.onchange = () => { perPage=parseInt(ppSel.value); currentPage=1; loadPage(); };
+  el.appendChild(ppSel);
+}
+
+let totalPairs = 0;
+
+async function loadPage() {
+  document.getElementById('content').innerHTML = '<div class="loading">Loading...</div>';
+  const params = new URLSearchParams({page: currentPage, per_page: perPage});
+  if(searchQuery) params.set('search', searchQuery);
+  const r = await fetch(BASE + '/api/pairs?' + params);
+  const data = await r.json();
+  totalPairs = data.total;
+  totalPages = data.total_pages;
+  currentPage = data.page;
+
+  buildPagination('paginationTop');
+  renderItems(data.items);
+  buildPagination('paginationBottom');
+
+  document.getElementById('paginationTop').scrollIntoView({behavior:'smooth'});
+  document.getElementById('btnReset').style.display = searchQuery ? '' : 'none';
+  openCardIdx = null;
+}
+
+function renderItems(items) {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  if(!items.length) {
+    content.innerHTML = '<div class="empty-state"><p>No pairs found</p><p style="font-size:13px">Try a different search query</p></div>';
+    return;
+  }
+  currentPairIndex = -1;
+  items.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'card-' + idx;
+
+    const chosenVer = item.chosen.version;
+    const rejectedVer = item.rejected.version;
+
+    const header = document.createElement('div');
+    header.className = 'card-header';
+    header.onclick = (e) => {
+      if(e.target.closest('audio') || e.target.closest('button')) return;
+      const wasOpen = card.classList.contains('open');
+      // close all
+      document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
+      if(!wasOpen) {
+        card.classList.add('open');
+        openCardIdx = idx;
+        card.scrollIntoView({behavior:'smooth', block:'center'});
+        ensureAudiosLoad(card);
+      } else {
+        openCardIdx = null;
+      }
+    };
+    header.innerHTML = `
+      <span class="id">#${item.group_id}</span>
+      <span class="prompt-preview">${escHtml(item.prompt_clean)}</span>
+      <span class="badges">
+        <span class="badge badge-chosen">CHOSEN ${chosenVer}</span>
+        <span class="badge-vs">vs</span>
+        <span class="badge badge-rejected">REJECTED ${rejectedVer}</span>
+      </span>
+    `;
+    card.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.innerHTML = `
+      <div class="prompt-full">${escHtml(item.prompt_clean)}</div>
+      <div class="compare">
+        <div class="audio-col chosen">
+          <h3><span class="badge badge-chosen">CHOSEN</span> ${chosenVer} <small style="color:#8b949e">${item.chosen.utt}</small></h3>
+          <audio controls preload="none" data-src="${item.chosen.wav}"></audio>
+          <div class="audio-meta">Tokens: ${item.chosen.token_count}</div>
+        </div>
+        <div class="audio-col rejected">
+          <h3><span class="badge badge-rejected">REJECTED</span> ${rejectedVer} <small style="color:#8b949e">${item.rejected.utt}</small></h3>
+          <audio controls preload="none" data-src="${item.rejected.wav}"></audio>
+          <div class="audio-meta">Tokens: ${item.rejected.token_count}</div>
+        </div>
+      </div>
+      <div class="analysis-section">
+        <h4>Gemini Evaluation History (${item.eval_batches.length} batches, model: ${item.judge_model})</h4>
+        ${item.eval_batches.map((batch, bi) => `
+          <div class="analysis-batch">
+            <div class="batch-header">
+              <span>Batch ${bi+1}</span>
+              <span>Best: <strong style="color:#3fb950">${batch.best}</strong></span>
+              <span>Worst: <strong style="color:#f85149">${batch.worst}</strong></span>
+              <span>Ranking: ${batch.ranking.join(' > ')}</span>
+            </div>
+            ${batch.results.map(r => {
+              let cls = '';
+              if(r.version === chosenVer) cls = 'is-chosen';
+              else if(r.version === rejectedVer) cls = 'is-rejected';
+              return `<div class="analysis-item ${cls}">
+                <span class="ver-tag">[${r.version}]</span>${escHtml(r.analysis)}
+              </div>`;
+            }).join('')}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    card.appendChild(body);
+    content.appendChild(card);
+  });
+}
+
+function ensureAudiosLoad(card) {
+  card.querySelectorAll('audio[data-src]').forEach(a => {
+    if(!a.src || a.src === window.location.href) {
+      a.src = a.dataset.src;
+    }
+  });
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function doSearch() {
+  searchQuery = document.getElementById('searchInput').value.trim();
+  currentPage = 1;
+  loadPage();
+}
+
+function resetSearch() {
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  currentPage = 1;
+  loadPage();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  if(e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    navigatePair(1);
+  } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    navigatePair(-1);
+  } else if(e.key === ' ') {
+    e.preventDefault();
+    if(openCardIdx !== null) {
+      document.getElementById('card-' + openCardIdx)?.querySelector('.card-header')?.click();
+    }
+  } else if(e.key === '1') {
+    const card = document.getElementById('card-' + openCardIdx);
+    if(card) {
+      const audio = card.querySelector('.audio-col.chosen audio');
+      if(audio) { ensureAudiosLoad(card); audio.play(); }
+    }
+  } else if(e.key === '2') {
+    const card = document.getElementById('card-' + openCardIdx);
+    if(card) {
+      const audio = card.querySelector('.audio-col.rejected audio');
+      if(audio) { ensureAudiosLoad(card); audio.play(); }
+    }
+  }
+});
+
+function navigatePair(delta) {
+  if(openCardIdx === null) {
+    // open first card if nothing open
+    const firstCard = document.getElementById('card-0');
+    if(firstCard) { firstCard.querySelector('.card-header').click(); }
+    return;
+  }
+  const newIdx = openCardIdx + delta;
+  // check if we need to change page
+  if(newIdx < 0 && currentPage > 1) {
+    currentPage--;
+    loadPage().then(() => {
+      const cards = document.querySelectorAll('.card');
+      if(cards.length) cards[cards.length-1].querySelector('.card-header').click();
+    });
+    return;
+  }
+  if(newIdx >= perPage && currentPage < totalPages) {
+    currentPage++;
+    loadPage().then(() => {
+      const cards = document.querySelectorAll('.card');
+      if(cards.length) cards[0].querySelector('.card-header').click();
+    });
+    return;
+  }
+  const card = document.getElementById('card-' + newIdx);
+  if(card) {
+    document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
+    card.classList.add('open');
+    openCardIdx = newIdx;
+    ensureAudiosLoad(card);
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+
+// Init
+loadStats();
+loadPage();
+</script>
+</body>
+</html>

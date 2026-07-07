@@ -1,0 +1,19 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/utt_wav90w.jsonl",
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out",
+  "stage_outputs": {
+    "stage1_grouped_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_grouped_by_prefix.jsonl",
+    "stage1_flat_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_rows_with_group.jsonl",
+    "stage1_stats_tsv": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_group_stats.tsv",
+    "stage1_summary_json": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/01_grouped/dpo_group_summary.json",
+    "stage2_dedup_flat_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/02_dedup/dpo_rows_with_group_token_dedup.jsonl",
+    "stage2_summary_json": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/02_dedup/dpo_rows_with_group_token_dedup_summary.json",
+    "stage3_grouped_dedup_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/03_regrouped/dpo_grouped_by_prefix_token_dedup.jsonl",
+    "stage3_summary_json": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_90w/prepared_out/03_regrouped/dpo_grouped_by_prefix_token_dedup_summary.json"
+  },
+  "args": {
+    "min_group_size": 2,
+    "max_group_size": 0,
+    "drop_no_group": false
+  }
+}

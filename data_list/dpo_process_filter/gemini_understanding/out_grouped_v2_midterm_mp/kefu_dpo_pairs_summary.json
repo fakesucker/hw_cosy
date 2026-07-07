@@ -1,0 +1,16 @@
+{
+  "groups_total": 1969,
+  "groups_pending_this_run": 1969,
+  "groups_skipped_resume": 0,
+  "groups_success_this_run": 0,
+  "groups_failed_this_run": 1969,
+  "groups_success_total": 0,
+  "failed_reason_counts": {
+    "batch_evaluate_failed": 1969
+  },
+  "model": "gemini-3.1-pro-preview",
+  "max_batch_size": 4,
+  "concurrent_groups": 2,
+  "num_processes": 8,
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_midterm_mp"
+}

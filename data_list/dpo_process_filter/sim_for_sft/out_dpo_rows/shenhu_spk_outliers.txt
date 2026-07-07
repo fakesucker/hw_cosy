@@ -1,0 +1,24 @@
+# 流程: per-utt WavLM-large(SV) embedding -> StandardScaler -> PCA 正交坐标 -> KMeans(k=32) -> 离群=到所属簇中心距离 >= 全局 98% 分位
+# n_samples=1000 n_outliers=20 pca_dim=64 kmeans_k=32
+# pca_explained_variance_ratio_sum=0.829745 dist_threshold=18.848144
+utt	wav_path	dist_to_cluster_center	cluster_id	pca_0	pca_1	pca_2
+00034_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00034_000.wav	19.277262	9	0.175971	-6.185579	6.062414
+00034_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/00034_020.wav	18.961203	15	-14.064406	-8.601001	2.500929
+00216_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00216_000.wav	20.243532	6	-11.486917	-14.076727	1.297102
+00216_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/00216_020.wav	19.920296	11	4.280488	-4.793591	-3.403133
+00326_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00326_010.wav	20.219542	26	3.269303	-2.144138	3.967765
+00357_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/00357_020.wav	19.148338	26	2.341540	3.474202	1.723255
+00359_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00359_000.wav	19.241146	23	-5.797964	1.682180	11.836279
+00359_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00359_010.wav	19.961935	2	1.421867	3.368019	15.642679
+00426_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00426_000.wav	19.064976	28	1.639995	-5.839736	7.939182
+00426_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00426_010.wav	24.042376	28	1.751737	-4.496687	10.270880
+00457_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00457_000.wav	19.841673	6	-12.690290	-9.270804	-2.516076
+00457_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00457_010.wav	19.223114	20	-0.147475	2.269318	3.151179
+00486_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00486_010.wav	19.897470	11	0.321263	-4.377757	-3.667786
+00495_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00495_000.wav	20.329420	11	1.330038	0.167823	-4.845839
+00495_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00495_010.wav	19.352724	18	-14.985162	-8.898552	4.710450
+00495_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/00495_020.wav	19.066572	11	2.740940	-4.711529	1.568551
+00563_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/00563_020.wav	19.255850	8	-3.836181	-0.669896	-1.036645
+00586_000	/home/work_nfs22/xmren/data/kefu/90w_tokens/00586_000.wav	20.041254	28	-0.340977	-0.525202	12.854670
+00994_010	/home/work_nfs22/xmren/data/kefu/90w_tokens/00994_010.wav	19.060282	6	-11.096147	-12.935586	0.388195
+01000_020	/home/work_nfs22/xmren/data/kefu/90w_tokens/01000_020.wav	19.188694	15	-7.722250	-8.744161	1.534400

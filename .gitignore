@@ -1,0 +1,138 @@
+# =============================================================================
+# CosyVoice — Git ignore (upstream + Huawei SFT/DPO project extensions)
+# =============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.venv/
+venv/
+env/
+
+# --- Editors / IDE ---
+.vscode/
+.vs/
+.idea/
+*.*project
+.settings/
+*.sublime-workspace
+*.sublime-project
+.codex/
+.claude/
+.agents/
+.cursor/
+*.swn
+*.swo
+*.swp
+*.swm
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- Clangd / compile DB ---
+.cache/
+compile_commands.json
+
+# --- Build artifacts ---
+**/*build*/
+
+# --- Training / experiment outputs (upstream) ---
+exp/
+tensorboard/
+data/
+raw_wav/
+
+# --- Huawei project: inference & sweep outputs ---
+testout/
+examples/huawei_sft/testout/
+examples/huawei_sft/logs_*/
+logs_*/
+
+# --- Model weights & large binaries ---
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+pretrained_models/*
+!pretrained_models/.gitkeep
+
+# --- Audio / media (generated or local datasets) ---
+*.wav
+*.m4a
+*.aac
+*.flac
+*.mp3
+*.ogg
+
+# --- NumPy / embedding caches ---
+*.npy
+*.npz
+
+# --- Archives ---
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+
+# --- ONNX / TensorRT (exported; pretrained_models/ has its own rule) ---
+*.onnx
+*.engine
+*.plan
+
+# --- Logs & runtime ---
+*.log
+nohup.out
+wandb/
+
+# --- Secrets / local env ---
+.env
+.env.*
+*.pem
+credentials.json
+
+# --- gRPC generated (upstream) ---
+*_pb2_grpc.py
+*_pb2.py
+
+# --- Local backup / duplicate scratch files ---
+*.bak
+* copy.py
+* copy.sh
+* copy.ipynb
+
+# --- Data artifacts (keep *.lst / *.py / *.md index & tooling) ---
+data_list/**/*.jsonl
+data_list/**/part_*
+data_list/splits.tar.gz
+data_list/splits/kefu_test/prompt_wav/
+data_list/splits/kefu_test/prompt_denoise/
+data_list/splits/kefu_test/s3tokens/
+data_list/splits/kefu_test/simalution_DIA_female/
+data_list/AB-test/mixed_*/
+data_list/dpo_process_filter/**/outputs/
+data_list/dpo_process_filter/**/output/
+
+# --- AB-test generated audio (keep scripts & README) ---
+data_list/AB-test/**/*.wav
+data_list/dpo/**/*.bak*
+*.jsonl.bak*

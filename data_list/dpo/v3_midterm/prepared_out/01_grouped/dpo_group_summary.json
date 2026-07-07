@@ -1,0 +1,20 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/speech_tokens.jsonl",
+  "total_groups_raw": 1969,
+  "total_groups_kept": 1969,
+  "total_rows_raw": 72450,
+  "total_rows_kept": 72450,
+  "bad_json": 0,
+  "missing_utt": 0,
+  "min_group_size": 2,
+  "max_group_size": 0,
+  "group_size_distribution": {
+    "30": 1523,
+    "60": 446
+  },
+  "outputs": {
+    "grouped_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/01_grouped/dpo_grouped_by_prefix.jsonl",
+    "flat_with_group_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/01_grouped/dpo_rows_with_group.jsonl",
+    "stats_tsv": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v3_midterm/prepared_out/01_grouped/dpo_group_stats.tsv"
+  }
+}

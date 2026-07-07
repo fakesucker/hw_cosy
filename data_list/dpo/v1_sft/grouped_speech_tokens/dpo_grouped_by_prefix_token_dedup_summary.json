@@ -1,0 +1,13 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/grouped_speech_tokens/dpo_rows_with_group_token_dedup.jsonl",
+  "output_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/grouped_speech_tokens/dpo_grouped_by_prefix_token_dedup.jsonl",
+  "total_rows_in": 46888,
+  "total_groups_out": 15701,
+  "bad_json": 0,
+  "missing_group_id": 0,
+  "group_size_distribution": {
+    "1": 77,
+    "2": 61,
+    "3": 15563
+  }
+}

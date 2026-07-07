@@ -1,0 +1,10 @@
+{
+  "groups_total": 9,
+  "groups_success": 9,
+  "groups_failed": 0,
+  "model": "gemini-3.1-pro-preview",
+  "max_batch_size": 4,
+  "concurrent_groups": 2,
+  "num_processes": 8,
+  "out_dir": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo_process_filter/gemini_understanding/out_grouped_v2_0428_mp_debug"
+}

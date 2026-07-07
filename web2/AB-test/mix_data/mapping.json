@@ -1,0 +1,62 @@
+[
+  {
+    "new_name": "HUvkC9jvlhe5FzR0pn5E.wav",
+    "source_tag": "bigbatch_epoch_4_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/bigbatch/epoch_4_whole/001_000000.wav",
+    "source_file": "001_000000.wav"
+  },
+  {
+    "new_name": "AuhpxxplWh1iWIhZQDpc.wav",
+    "source_tag": "bigbatch_epoch_4_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/bigbatch/epoch_4_whole/001_000001.wav",
+    "source_file": "001_000001.wav"
+  },
+  {
+    "new_name": "Rds4Jw2fLqfvicdWz7r7.wav",
+    "source_tag": "bigbatch_epoch_4_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/bigbatch/epoch_4_whole/001_000002.wav",
+    "source_file": "001_000002.wav"
+  },
+  {
+    "new_name": "ZXtoBSU117ZXvKpHNarv.wav",
+    "source_tag": "bigbatch_epoch_4_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/bigbatch/epoch_4_whole/001_000003.wav",
+    "source_file": "001_000003.wav"
+  },
+  {
+    "new_name": "CbBPuOfSPUNGcvPa5kT0.wav",
+    "source_tag": "bigbatch_epoch_4_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/bigbatch/epoch_4_whole/001_000004.wav",
+    "source_file": "001_000004.wav"
+  },
+  {
+    "new_name": "rPfxKGTa8utoB3rIOldc.wav",
+    "source_tag": "shenhuonly_epoch_2_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/shenhuonly/epoch_2_whole/001_000000.wav",
+    "source_file": "001_000000.wav"
+  },
+  {
+    "new_name": "nXkQ5n0Y07S87L42P8NF.wav",
+    "source_tag": "shenhuonly_epoch_2_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/shenhuonly/epoch_2_whole/001_000001.wav",
+    "source_file": "001_000001.wav"
+  },
+  {
+    "new_name": "pZWPDakjz5vSJkUGeT1N.wav",
+    "source_tag": "shenhuonly_epoch_2_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/shenhuonly/epoch_2_whole/001_000002.wav",
+    "source_file": "001_000002.wav"
+  },
+  {
+    "new_name": "AKPzY3B3f2Ve8AMxsy9W.wav",
+    "source_tag": "shenhuonly_epoch_2_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/shenhuonly/epoch_2_whole/001_000003.wav",
+    "source_file": "001_000003.wav"
+  },
+  {
+    "new_name": "KGSZmUOgVO301GCJK6Vl.wav",
+    "source_tag": "shenhuonly_epoch_2_whole",
+    "source_path": "/home/work_nfs22/xmren/code/web2/AB-test/shenhuonly/epoch_2_whole/001_000004.wav",
+    "source_file": "001_000004.wav"
+  }
+]

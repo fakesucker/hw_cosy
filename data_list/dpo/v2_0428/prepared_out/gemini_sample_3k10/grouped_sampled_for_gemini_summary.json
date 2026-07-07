@@ -1,0 +1,15 @@
+{
+  "input_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_0428/prepared_out/03_regrouped/dpo_grouped_by_prefix_token_dedup.jsonl",
+  "output_jsonl": "/home/work_nfs23/hkxie/hw_proj/CosyVoice/data_list/dpo/v2_0428/prepared_out/gemini_sample_3k10/grouped_sampled_for_gemini.jsonl",
+  "total_groups": 6389,
+  "bad_json": 0,
+  "invalid_items_field": 0,
+  "filtered_wrong_group_size": 242,
+  "filtered_non_unique_token_groups": 0,
+  "eligible_groups": 6147,
+  "requested_sample_groups": 3000,
+  "actual_sampled_groups": 3000,
+  "sample_items_per_group": 10,
+  "required_group_size": 30,
+  "seed": 42
+}
